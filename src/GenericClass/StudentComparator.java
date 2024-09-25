@@ -2,7 +2,7 @@ package GenericClass;
 
 import java.util.Comparator;
 
-public class StudentComparator <T extends Student> implements Comparator<Student> {
+public class StudentComparator <T extends Student> implements Comparator<T> {
     private final String orderBy;
     StudentComparator(String orderBy) {
         this.orderBy = orderBy;
@@ -12,7 +12,7 @@ public class StudentComparator <T extends Student> implements Comparator<Student
     }
 
     @Override
-    public int compare(Student o1, Student o2) {
+    public int compare(T o1, T o2) {
         if(this.orderBy.equalsIgnoreCase("name")) {
             return o1.getName().compareTo(o2.getName());
         }

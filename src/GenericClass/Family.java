@@ -46,6 +46,6 @@ public class Family extends Student {
         for(var f : v) {
             System.out.println(f);
         }
-
+        Student.<Family>printList(v);
     }
 }

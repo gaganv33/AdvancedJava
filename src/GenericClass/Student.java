@@ -42,5 +42,17 @@ public class Student {
         for(var s : v) {
             System.out.println(s);
         }
+        Student.<Student>printList(v);
+    }
+    public static <T extends Student> void printList(List<T> v) {
+        System.out.println("Generic method printing");
+        System.out.println("Class: " + v.getClass().getName());
+        for(var s : v) {
+            System.out.print(s.getGpa() + " " + s.getName() + " ");
+            if(s instanceof Family) {
+                System.out.println(((Family) s).getFatherName() + " " + ((Family) s).getMotherName());
+            }
+            System.out.println();
+        }
     }
 }
