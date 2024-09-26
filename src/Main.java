@@ -1,7 +1,7 @@
-import CollectionsRevision.LinkedHashSetRevision;
+import CollectionsRevision.LinkedListRevision;
 
 public class Main {
     public static void main(String[] args) {
-        LinkedHashSetRevision.start();
+        LinkedListRevision.start();
     }
 }
