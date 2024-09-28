@@ -1,7 +1,7 @@
-import StreamRevision.StreamPractise;
+import StreamRevision.StreamOptional;
 
 public class Main {
     public static void main(String[] args) {
-        StreamPractise.start();
+        StreamOptional.start();
     }
 }

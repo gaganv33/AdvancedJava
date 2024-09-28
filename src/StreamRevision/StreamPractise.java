@@ -66,5 +66,21 @@ public class StreamPractise {
         IntStream.rangeClosed(1, 101)
                 .filter(s -> s % 2 == 1)
                 .forEach(s -> System.out.print(s + " "));
+
+        System.out.println("\n--------------");
+
+        Stream.generate(() -> rand.nextInt(45000))
+                .limit(1000)
+                .sorted((s1, s2) -> s1 - s2)
+                .dropWhile(s -> s % 11 == 0)
+                .takeWhile(s -> (s % 2 == 0 || s % 3 == 0))
+                .map(s -> {
+                    String res = "";
+                    res += Integer.toString(s) + "-" + Integer.toString(s % 7);
+                    return res;
+                })
+                .forEach(s -> System.out.print(s + " "));
+
+        System.out.println("\n--------------");
     }
 }
