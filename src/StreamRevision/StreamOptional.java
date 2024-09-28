@@ -67,5 +67,21 @@ public class StreamOptional {
                 .filter((s) -> s.getMarks() >= 95)
                 .findAny()
                 .ifPresentOrElse((s) -> System.out.println("Found: " + s), () -> System.out.println("Data Not Found."));
+
+        System.out.println();
+
+        String data = Stream.generate(Student::getRandomStudent)
+                .limit(10)
+                .filter((s) -> s.getMarks() <= 10)
+                .map(Student::getName)
+                .reduce("", (s, t) -> s + " " + t);
+        System.out.println("Students name with more than or equal to 60 marks: " + data);
+
+        Stream.generate(Student::getRandomStudent)
+                .limit(10)
+                .filter((s) -> s.getMarks() >= 60)
+                .map(Student::getName)
+                .reduce((s, t) -> s + " " + t)
+                .ifPresentOrElse((s) -> System.out.println("Data found: " + s), () -> System.out.println("Data not found."));
     }
 }
