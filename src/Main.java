@@ -1,7 +1,7 @@
-import CollectionsRevision.LinkedHashMapRevision;
+import CollectionsRevision.TreeMapRevision;
 
 public class Main {
     public static void main(String[] args) {
-        LinkedHashMapRevision.start();
+        TreeMapRevision.start();
     }
 }
