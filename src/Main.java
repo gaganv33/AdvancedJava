@@ -1,7 +1,7 @@
-import CollectionsRevision.TreeSetRevision;
+import CollectionsRevision.HashMapRevision;
 
 public class Main {
     public static void main(String[] args) {
-        TreeSetRevision.start();
+        HashMapRevision.start();
     }
 }
