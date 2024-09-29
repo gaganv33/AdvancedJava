@@ -1,7 +1,7 @@
-import CollectionsRevision.HashMapRevision;
+import CollectionsRevision.LinkedHashMapRevision;
 
 public class Main {
     public static void main(String[] args) {
-        HashMapRevision.start();
+        LinkedHashMapRevision.start();
     }
 }
