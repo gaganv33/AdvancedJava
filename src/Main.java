@@ -1,7 +1,7 @@
-import CollectionsRevision.TreeMapRevision;
+import Concurrency.InteractingThread;
 
 public class Main {
     public static void main(String[] args) {
-        TreeMapRevision.start();
+        InteractingThread.start();
     }
 }
