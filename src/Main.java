@@ -1,7 +1,7 @@
-import Concurrency.InteractingThread;
+import Concurrency.Thread1Challenge;
 
 public class Main {
     public static void main(String[] args) {
-        InteractingThread.start();
+        Thread1Challenge.start();
     }
 }
