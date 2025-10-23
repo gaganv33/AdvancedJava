@@ -1,0 +1,78 @@
+Process: Process is an instance of a program execution. When you enter an application it's a process. The OS assigns
+it's own stack and heap memory area.
+
+Thread: It is a lightweight process. It is a unit of execution within a given program. A single process may contain
+multiple threads. Each thread in the process shares the memory and resources.
+
+Concurrency: Concurrency means dealing with multiple tasks at once, but not necessarily executing them simultaneously.
+Instead, tasks make progress by sharing time on the same processing resource. Concurrency is an approach that is used
+for decreasing the response time of the system by using the single processing unit. It creates the illusion of parallelism.
+
+Parallelism: Parallelism refers to actually executing multiple tasks at the same time on multiple processing units.
+Here  tasks are divided into smaller sub-tasks that are processed seemingly simultaneously or parallel. It is used to
+increase the throughput and computational speed of the system by using multiple processors.
+
+Thread Lifecycle:
+    New state: Every thread is in this state until we call start() on it.
+    Active State: Every thread is in this state after we call start() on it. It has 2 sub states running and runnable.
+    Blocked state: Every thread is in this state when it's waiting for some thread to finish.
+    Terminated state: Every thread is in this state after it's done doing it's required task.
+
+Runnable vs Thread:
+    -> If we extend Thread then we cannot extend any other class, usually a big disadvantage.
+    -> However, a class may implement more than one interface, so while using Implements Runnable approach there is no
+       restrictions to extension of class now or in the future.
+
+join method in java:
+    Main thread as the parent method
+        When we start a program usually, the execution begins with main() method. This method runs on the main thread.
+        This can be understood as the parent thread since it spawns the other threads.
+    Independent execution of threads
+        When you create and start other threads, they run concurrently with the main threads unless instructed otherwise.
+        So under normal circumstances, all threads run independent of each other. More explicitly, no thread waits for other
+        thread
+    What is join method:
+        Imagine threads to be lines of execution. So, when we call .join() method on a certain thread, it means the parent thread,
+        the main thread in this case (could be any thread which created the thread on which .join() is begin called) is
+        saying "Hey thread, once you are done executing your task, join my flow of execution". It's like the parent thread waits
+        for the completion of the child thread and then continues with its execution.
+
+Daemon and User Threads:
+    -> On the basis of surface of execution, threads can of 2 types: Daemon and User Threads
+    -> When a java program starts the main thread (main method thread) starts running immediately. We can start child
+       threads from the main thread. The main thread is the last thread to finish execution in normal circumstances, because
+       it has to perform various shutdown operations,
+    -> Daemon threads are intended to be helper threads which can run in background and are of low priority.
+    -> Daemon threads are terminated by JVM when all other user threads are terminated or done with their execution.
+    -> So, under normal circumstances, user thread are allowed to terminate once they are done with their execution, however,
+       the daemon threads are shutdown by JVM once all the other threads are done executing.
+
+Note: By default threads are not daemon threads. We need to set it using thread_name.setDaemon(true)
+
+Thread Priority:
+-> Each thread has certain priority and under normal circumstances the thread with the higher priority gets to ubn on the CPU.
+-> Priority values ranges from 1 to 10. 1 is represented as MIN_PRIORITY and 10 as MAX_PRIORITY.
+-> threads with same priority are executed in FIFO manner. Thread scheduler stores the threads in a queue.
+Note: We set priority using the method thread_name.setPriority();
+
+Thread Synchronization:
+-> To prevent race condition.
+Using synchronized keyword.
+Note: When we use synchronized keyword for a method then class level lock is acquired, thus if there is another method
+which is synchronized, then it has to wait until the first method has released the class level lock. Thus, it is advised to
+use synchronize keyword at block level instead of method level.
+
+Wait and Notify:
+Note: Difference between wait and sleep: wait is used to inter thread communication and synchronization, but sleep is used to
+pause a thread for a specified duration.
+-> wait(): The wait() method causes the current thread to pause its execution and release the lock (monitor) it holds on the object.
+-> notify(): The notify() method wakes up a single thread that is currently waiting on the object's monitor.
+   If multiple threads are waiting, only one arbitrarily chosen thread will be awakened.
+
+Note: The thread that called notify() continues to hold the object's monitor lock. It does not release this lock until
+it exits the synchronized block or method in which notify was called, or until it explicitly calls wait() itself.
+
+Producer Consumer: The producer consumer problem is a synchronization scenario where one or more producer threads generate data
+and put it into a shared buffer, while one or more consumer threads retrieve and process the data from the buffer concurrently.
+
+
