@@ -75,4 +75,35 @@ it exits the synchronized block or method in which notify was called, or until i
 Producer Consumer: The producer consumer problem is a synchronization scenario where one or more producer threads generate data
 and put it into a shared buffer, while one or more consumer threads retrieve and process the data from the buffer concurrently.
 
+Executor Service: Helps us in creating a bunch of threads, a pool of threads hence the name thread pool and the threads are not
+killed once they are done executing the task, rather they are reused to execute another task.
+
+Types:
+    -> SingleThreadExecutor
+    -> FixedThreadPoolExecutor
+    -> CachedThreadPool
+    -> ScheduledExecutor
+
+Note: The executor service has to be closed once we are done using it.
+
+SingleThreadExecutor: In the case of a SingleThreadExecutor, the size of the thread pool is just one. The order of task
+execution is always followed.
+
+FixedThreadPoolExecutor: In the case of FixedThreadPool, there is a fixed number of threads that are pre created and the executor
+also has a task queue where all the tasks will be placed. The threads in the fixed thread pool will pick the tasks from the
+task queue and execute them, and when the thread is done with the execution of a task, it goes ahead and picks another task
+and this keeps on happening until all the tasks are completed.
+
+CachedThreadPoolExecutor: In the case of CachedThreadPoolExecutor, we don't have a fixed number of threads, the task queue
+does not hold the number of tasks which we submit. The queue used in this case is a synchronous queue. The synchronous queue
+has space only for a single task, so every time you submit a new task the CachedThreadPoolExecutor holds the task in the
+synchronous queue and it searches for the thread which has been already created and they are not working actively on any task.
+If no such thread is available the executor will create a new thread and add it to the thread pool and this newly created thread
+starts to execute the task which has been submitted. If a task is not assigned to a thread within 60 seconds,
+then the thread will be killed. So CachedThreadPoolExecutor is auto scaling in nature.
+
+ScheduledThreadPoolExecutor: This thread pool is used for kind of tasks which we want to schedule in some manner and
+they way it works is all the tasks are submitted in a task queue, but this queue is a delay queue, in the delay queue,
+tasks are not kept in sequential manner, but it is ordered based on the execution time.
+
 
