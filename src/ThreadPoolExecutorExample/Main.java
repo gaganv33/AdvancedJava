@@ -1,8 +1,10 @@
+package ThreadPoolExecutorExample;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.*;
 
-public class ThreadPoolExecutorExample {
+public class Main {
     public static void main(String[] args) throws ExecutionException, InterruptedException, TimeoutException {
         ThreadPoolExecutor threadPoolExecutor = new ThreadPoolExecutor(2, 3, 2,
                 TimeUnit.MINUTES, new ArrayBlockingQueue<>(3), new CustomThreadFactory(), new CustomExceptionHandler());
